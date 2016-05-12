@@ -7,27 +7,18 @@
     "test": "test"
   },
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-=======
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node greet.js"
   },
   "author": "Me",
->>>>>>> bd1799136caf7c3b9b1759eb140573d44a140105
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "mocha": "^2.4.5"
-<<<<<<< HEAD
-=======
   },
   "dependencies": {
     "lodash": "^4.12.0"
->>>>>>> bd1799136caf7c3b9b1759eb140573d44a140105
   }
 }
