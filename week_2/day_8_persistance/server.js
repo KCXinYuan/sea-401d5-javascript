@@ -33,20 +33,9 @@ http.createServer((req, res) => {
 
     req.on('end', () => {
       //start processing
-
       //validation
       let str = bufArr.toString(); //array of buffers to string
       let jsonObj = {};
-      // try {
-      //   jsonObj = JSON.parse(str);
-      // } catch (e) {
-      //   //tell client we have error
-      //   res.statusCode = 400;
-      //   res.write("Use json");
-      //   //log error
-      //   console.log("error validating");
-      // }
-
       jsonParse(str).then((data) =>{  //data is a json obj
         let validString = JSON.stringify(data);
         //TODO error handling file write
@@ -66,23 +55,7 @@ http.createServer((req, res) => {
         //log error
         console.log(err);
       });
-
-
-
-
-
-
-
     });
-
-
-
-    // validate json
-
-
-    // write to file
-
-
   } else {
     //TODO deal with not found
     res.status = 404;
