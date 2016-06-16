@@ -1,11 +1,8 @@
 // Karma configuration
-<<<<<<< HEAD
-// Generated on Wed Jun 15 2016 14:25:10 GMT-0700 (Pacific Daylight Time)
-=======
-// Generated on Wed Jun 15 2016 14:18:54 GMT-0700 (PDT)
->>>>>>> 0ae7ee0ccc908ba2d88f535b6200e5c3d201c50b
+// Generated on Wed Jun 08 2016 13:49:50 GMT-0700 (PDT)
 
 module.exports = function(config) {
+    console.log(__dirname)
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -19,10 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-<<<<<<< HEAD
-=======
-      'test/test_bundle.js'
->>>>>>> 0ae7ee0ccc908ba2d88f535b6200e5c3d201c50b
+      'test/*_bundle.js'
     ],
 
 
@@ -34,13 +28,14 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      './app/js/*.js': 'coverage'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['mocha', 'coverage'],
 
 
     // web server port
@@ -64,17 +59,17 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
-
+    //CF: change single run to true
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-<<<<<<< HEAD
-    singleRun: false,
-=======
     singleRun: true,
->>>>>>> 0ae7ee0ccc908ba2d88f535b6200e5c3d201c50b
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    concurrency: Infinity,
+
+    coverageReporter: {
+      type : 'text'
+    }
+  });
+};
