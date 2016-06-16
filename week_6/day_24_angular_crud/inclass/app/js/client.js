@@ -5,15 +5,30 @@ const app = angular.module('NotesApp', []);
 
 app.controller('NotesController', NotesController);
 
-function NotesController() {
+function NotesController($http) {
   this.smokeTest = 'hello';
+  this.$http = $http;
   this.notes = [{'body':'test notes'}];
 
 }
 
+NotesController.prototype.getNotes = function() {
+  this.$http.get('http://localhost:3000/')
+  .then((res)=> {
+    this.notes = res.data.data;
+  }, (err)=> {
+    console.log(err);
+  })
+};
+
 NotesController.prototype.addNote = function() {
-  this.notes.push(this.newNote);
-  this.newNote = null;
+  this.$http.post('http://localhost:3000/', this.newNote)
+  .then((res)=> {
+    this.notes.push(res.data);
+    this.newNote = null;
+  }, (err)=> {
+    console.log(err);
+  });
 };
 
 NotesController.prototype.deleteNote = function(note) {
