@@ -1,9 +1,5 @@
 // Karma configuration
-<<<<<<< HEAD
-// Generated on Thu Jun 16 2016 15:37:03 GMT-0700 (Pacific Daylight Time)
-=======
-// Generated on Thu Jun 16 2016 15:34:24 GMT-0700 (PDT)
->>>>>>> 22696d5e3d959c8bbfa41d9bb122fd726c3d36ce
+// Generated on Wed Jun 08 2016 13:49:50 GMT-0700 (PDT)
 
 module.exports = function(config) {
   config.set({
@@ -19,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/test_bundle.js'
+      'test/*_bundle.js'
     ],
 
 
@@ -61,7 +57,7 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
-
+    //CF: change single run to true
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,

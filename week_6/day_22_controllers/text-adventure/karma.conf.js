@@ -1,9 +1,5 @@
 // Karma configuration
-<<<<<<< HEAD
-// Generated on Thu Jun 16 2016 15:37:03 GMT-0700 (Pacific Daylight Time)
-=======
-// Generated on Thu Jun 16 2016 15:34:24 GMT-0700 (PDT)
->>>>>>> 22696d5e3d959c8bbfa41d9bb122fd726c3d36ce
+// Generated on Wed Jun 15 2016 14:19:01 GMT-0700 (PDT)
 
 module.exports = function(config) {
   config.set({
@@ -69,5 +65,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
