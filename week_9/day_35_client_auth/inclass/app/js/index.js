@@ -18,7 +18,6 @@ app.factory('AuthService', function($http) {
 service.getToken = function() {
   return token;
 };
-
   return service;
 });
 
