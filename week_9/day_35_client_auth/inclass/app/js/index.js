@@ -1,5 +1,6 @@
 const angular = require('angular');
 const ngRoute = require('angular-route');
+
 const app = angular.module('PenguinApp', [ngRoute]);
 
 app.controller('PenguinController', function($http) {
@@ -25,22 +26,41 @@ app.controller('PenguinController', function($http) {
       });
   };
 
-  app.controller('SigninController', function($location) {
-    this.goHome = function() {
-      $location.url('/');
-    };
-  });
+//   app.controller('SigninController', function($location) {
+//     this.goHome = function() {
+//       $location.url('/');
+//     };
+//   });
+//
+//   app.config(function($routeProvider) {
+//     $routeProvider.when('/',{
+//       templateUrl: './views/home.html',
+//       controller: 'PenguinController',
+//       controllerAs: 'penguinctrl'
+//     })
+//     .when('/signin', {
+//       templateUrl: './views/signin.html',
+//       controller: 'SigninController',
+//       controllerAs: 'signinctrl'
+//     });
+//   });
+// });
 
-  app.config(function($routeProvider) {
-    $routeProvider.when('/',{
-      templateUrl: './views/home.html',
-      controller: 'PenguinController',
-      controllerAs: 'penguinctrl'
-    })
-    .when('/signin', {
-      templateUrl: './views/signin.html',
-      controller: 'SigninController',
-      controllerAs: 'signinctrl'
-    });
+app.controller('SigninController', function($location) {
+  this.goHome = function() {
+    $location.url('/');
+  };
+});
+
+app.config(function($routeProvider) {
+  $routeProvider.when('/', {
+    templateUrl: './views/home.html',
+    controller: 'PenguinController',
+    controllerAs: 'penguinctrl'
+  })
+  .when('/signin', {
+    template:'./views/signin.html',
+    controller: 'SigninController',
+    controllerAs: 'signinctrl'
   });
 });
