@@ -25,26 +25,7 @@ app.controller('PenguinController', function($http) {
         console.log(err);
       });
   };
-
-//   app.controller('SigninController', function($location) {
-//     this.goHome = function() {
-//       $location.url('/');
-//     };
-//   });
-//
-//   app.config(function($routeProvider) {
-//     $routeProvider.when('/',{
-//       templateUrl: './views/home.html',
-//       controller: 'PenguinController',
-//       controllerAs: 'penguinctrl'
-//     })
-//     .when('/signin', {
-//       templateUrl: './views/signin.html',
-//       controller: 'SigninController',
-//       controllerAs: 'signinctrl'
-//     });
-//   });
-// });
+});
 
 app.controller('SigninController', function($location) {
   this.goHome = function() {
@@ -53,13 +34,13 @@ app.controller('SigninController', function($location) {
 });
 
 app.config(function($routeProvider) {
-  $routeProvider.when('/', {
+  $routeProvider.when('/',{
     templateUrl: './views/home.html',
     controller: 'PenguinController',
     controllerAs: 'penguinctrl'
   })
   .when('/signin', {
-    template:'./views/signin.html',
+    templateUrl: './views/signin.html',
     controller: 'SigninController',
     controllerAs: 'signinctrl'
   });
