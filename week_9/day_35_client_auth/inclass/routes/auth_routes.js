@@ -24,3 +24,10 @@ userRouter.post('/signin', basicHTTP, (req, res, next) => {
     res.json({token: user.generateToken()});
   });
 });
+
+//Points of failure
+// -no auth
+// -improper format
+// -missing fields
+// -passwords don't match
+// -no user

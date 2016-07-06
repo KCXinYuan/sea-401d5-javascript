@@ -12,7 +12,7 @@ module.exports = function(req, res, next) {
     req.auth = {
       username: authArray[0],
       password: authArray[1]
-    }; 
+    };
   } catch (e) {
     return next(e);
   }
@@ -23,3 +23,8 @@ module.exports = function(req, res, next) {
 
   next();
 };
+
+//Three points of failure
+// -no token
+// -validate/decrypt token to see if the secret has been changed
+// -user doesn't exist

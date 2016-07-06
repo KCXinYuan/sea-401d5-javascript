@@ -18,4 +18,4 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-module.exports = app.listen(3000);
+module.exports = app.listen(3000, ()=> console.log('penguins up on 3000'));

@@ -1,5 +1,6 @@
 const angular = require('angular');
-const app = angular.module('PenguinApp', []);
+const ngRoute = require('angular-route');
+const app = angular.module('PenguinApp', [ngRoute]);
 
 app.controller('PenguinController', function($http) {
   const url = 'http://localhost:3000/penguins';
@@ -23,4 +24,23 @@ app.controller('PenguinController', function($http) {
         console.log(err);
       });
   };
+
+  app.controller('SigninController', function($location) {
+    this.goHome = function() {
+      $location.url('/');
+    };
+  });
+
+  app.config(function($routeProvider) {
+    $routeProvider.when('/',{
+      templateUrl: './views/home.html',
+      controller: 'PenguinController',
+      controllerAs: 'penguinctrl'
+    })
+    .when('/signin', {
+      templateUrl: './views/signin.html',
+      controller: 'SigninController',
+      controllerAs: 'signinctrl'
+    });
+  });
 });
