@@ -4,26 +4,18 @@ const ngRoute = require('angular-route');
 const app = angular.module('PenguinApp', [ngRoute]);
 
 app.factory('AuthService', function($http) {
-  var token;
+  let token;
   const service = {};
 
   service.signUp = function(user) {
     return $http.post('http://localhost:3000/signup', user)
-    .then((res) => {
-      token = res.data.token;
-      return res;
-    });
+      .then((res) => {
+        token = res.data.token;
+        return res;
+      });
   };
 
   service.signIn = function(user) {
-<<<<<<< HEAD
-    var base64Auth = btoa(user.username + ':' + user.password);
-    var authString = 'Basic ' + base64Auth;
-
-    return $http({
-      url
-    })
-=======
     let base64Auth = btoa(user.username + ':' + user.password);
     let authString = 'Basic ' + base64Auth;
 
@@ -35,18 +27,20 @@ app.factory('AuthService', function($http) {
       }
     }).then((res) => {
       token = res.data.token;
+      console.log('success in signin service',res);
       return res;
-    });
+    }
+    ,(err) => {
+      console.log('fail in signing service', err);
+      throw err;
+    }
+  );
   };
 
   service.getToken = function() {
     return token;
->>>>>>> 04fce1f19734ccdcd81d05407bda9e4a8bb0c7c5
   };
 
-service.getToken = function() {
-  return token;
-};
   return service;
 });
 
@@ -89,42 +83,38 @@ app.controller('SigninController', function($location, AuthService) {
 
   this.signUp = function(user) {
     AuthService.signUp(user)
-<<<<<<< HEAD
-    .then((res) => {
-      console.log(res.data.token);
-    });
-=======
       .then((res) => {
-        console.log(res, 'back in controller');
+        console.log(res, 'sign up res');
       })
       .then((err) => {
         console.log(err);
       });
->>>>>>> 04fce1f19734ccdcd81d05407bda9e4a8bb0c7c5
   };
 
   this.signIn = function(user) {
     AuthService.signIn(user)
-<<<<<<< HEAD
-    .then((res) => {
-      
-    })
-=======
       .then((res) => {
         console.log(res, 'sign in res');
+      }, (err) => {
+        console.log(err, 'failed sign in');
+        $location.path('/signup');
       });
->>>>>>> 04fce1f19734ccdcd81d05407bda9e4a8bb0c7c5
-  }
+  };
 });
 
 app.config(function($routeProvider) {
-  $routeProvider.when('/',{
+  $routeProvider.when('/', {
     templateUrl: './views/home.html',
     controller: 'PenguinController',
     controllerAs: 'penguinctrl'
   })
   .when('/signin', {
-    templateUrl: './views/signin.html',
+    templateUrl:'./views/signin.html',
+    controller: 'SigninController',
+    controllerAs: 'signinctrl'
+  })
+  .when('/signup', {
+    templateUrl:'./views/signup.html',
     controller: 'SigninController',
     controllerAs: 'signinctrl'
   });
